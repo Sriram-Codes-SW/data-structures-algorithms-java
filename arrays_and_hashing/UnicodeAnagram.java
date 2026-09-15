@@ -4,45 +4,29 @@ package arrays_and_hashing;
  * LeetCode 242 - Valid Anagram
  * https://leetcode.com/problems/valid-anagram/
  *
- * Approach: Using two maps to store characters and their counts and checking for valid Anagram
+ * Approach: Using a single map to count character frequencies from s (increment)
+ * and t (decrement), then checking all counts net to zero.
  *
  * Time Complexity: O(n)
- *  * Space Complexity: O(k) — O(1) if alphabet is fixed (e.g. a-z), O(n) worst case for Unicode
+ * Space Complexity: O(k) — O(1) if alphabet is fixed (e.g. a-z), O(n) worst case for Unicode
  */
 
 class Solution {
     public boolean isAnagram(String s, String t) {
-        if(s.equals(t)){
-            return true;
-        }
-        else if(s.length() != t.length()){
+        if(s.length() != t.length()){
             return false;
         }
         else {
-            Map<Character, Integer> countMapS= new HashMap<>();
-            Map<Character, Integer> countMapT= new HashMap<>();
-            for(int i= 0; i < s.length(); i++){
-                char charAtIndexForS= s.charAt(i);
-                char charAtIndexForT= t.charAt(i);
-
-                 if(countMapS.containsKey(charAtIndexForS)){
-                     countMapS.put(charAtIndexForS, countMapS.get(charAtIndexForS)+1);
-                 }
-                 else{
-                     countMapS.put(charAtIndexForS, 1);
-                 }
-                 if(countMapT.containsKey(charAtIndexForT)){
-                     countMapT.put(charAtIndexForT, countMapT.get(charAtIndexForT)+1);
-                 }
-                 else{
-                     countMapT.put(charAtIndexForT, 1);
-                 }
+            Map<Character, Integer> countMap= new HashMap<>();
+            for(char c : s.toCharArray()) {
+                countMap.merge(c, 1, Integer::sum);
             }
-            for(Character c: countMapS.keySet()){
-                if(countMapT.get(c) == null){
-                    return false;
-                }
-                else if(!countMapS.get(c).equals(countMapT.get(c))){
+            for(char c : t.toCharArray()) {
+                countMap.merge(c, -1, Integer::sum);
+            }
+
+            for(int charCount: countMap.values()) {
+                if(charCount != 0) {
                     return false;
                 }
             }
