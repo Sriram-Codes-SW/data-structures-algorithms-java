@@ -1,5 +1,8 @@
 package arrays_and_hashing;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * LeetCode 217 - Contains Duplicate
  * https://leetcode.com/problems/contains-duplicate/
@@ -10,7 +13,7 @@ package arrays_and_hashing;
  * Time Complexity: O(n) - Single Pass
  * Space Complexity: O(n) - No extra data structures were used
  */
-class Solution {
+public class ContainsDuplicate {
     public boolean containsDuplicate(int[] nums) {
         Set<Integer> notDuplicate= new HashSet<Integer>();
         for(int i= 0; i < nums.length;i++){
@@ -20,5 +23,12 @@ class Solution {
             }
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 1};
+        boolean result = new ContainsDuplicate().containsDuplicate(nums);
+        System.out.println("Input: " + java.util.Arrays.toString(nums));
+        System.out.println("Contains Duplicate: " + result);
     }
 }

@@ -12,7 +12,7 @@ package arrays_and_hashing;
  * Space Complexity: O(1) — fixed 26-element array, independent of input size
  */
 
-class Solution {
+public class LowercaseEnglishAlphabetAnagram {
     public boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) {
             return false;
@@ -29,5 +29,13 @@ class Solution {
             }
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        String s = "anagram";
+        String t = "nagaram";
+        boolean result = new LowercaseEnglishAlphabetAnagram().isAnagram(s, t);
+        System.out.println("s = \"" + s + "\", t = \"" + t + "\"");
+        System.out.println("Is Anagram: " + result);
     }
 }
