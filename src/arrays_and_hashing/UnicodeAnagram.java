@@ -1,5 +1,8 @@
 package arrays_and_hashing;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * LeetCode 242 - Valid Anagram
  * https://leetcode.com/problems/valid-anagram/
@@ -11,7 +14,7 @@ package arrays_and_hashing;
  * Space Complexity: O(k) — O(1) if alphabet is fixed (e.g. a-z), O(n) worst case for Unicode
  */
 
-class Solution {
+public class UnicodeAnagram {
     public boolean isAnagram(String s, String t) {
         if(s.length() != t.length()){
             return false;
@@ -32,5 +35,13 @@ class Solution {
             }
             return true;
         }
+    }
+
+    public static void main(String[] args) {
+        String s = "anagram";
+        String t = "nagaram";
+        boolean result = new UnicodeAnagram().isAnagram(s, t);
+        System.out.println("s = \"" + s + "\", t = \"" + t + "\"");
+        System.out.println("Is Anagram: " + result);
     }
 }

@@ -38,4 +38,12 @@ public class TwoSum {
 
         return new int[]{}; // Return empty array if no matching pair fulfills the constraint
     }
+
+    public static void main(String[] args) {
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
+        int[] result = new TwoSum().twoSum(nums, target);
+        System.out.println("Input: " + java.util.Arrays.toString(nums) + ", target = " + target);
+        System.out.println("Indices: " + java.util.Arrays.toString(result));
+    }
 }
